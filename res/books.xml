@@ -1,0 +1,20 @@
+<Books>
+    <Book ID="1">
+        <ISBN>9 783442 156122</ISBN>
+        <Title>Der geheime Schlüssel zum Universum</Title>
+        <Author>Lucy und Stephen Hawking</Author>
+        <Price>7.49</Price>
+    </Book>
+    <Book ID="2">
+        <ISBN>9 783404 154852</ISBN>
+        <Title>Sakrileg</Title>
+        <Author>Dan Brown</Author>
+        <Price>8.99</Price>
+    </Book>
+    <Book ID="3">
+        <ISBN>9 783453 071346</ISBN>
+        <Title>Der dunkle Turm</Title>
+        <Author>Stephen King</Author>
+        <Price>11.19</Price>
+    </Book>
+</Books>
