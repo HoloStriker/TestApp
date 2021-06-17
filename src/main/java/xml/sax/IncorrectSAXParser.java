@@ -15,7 +15,7 @@ import java.io.InputStream;
 import java.util.List;
 
 public class IncorrectSAXParser {
-    public static void main(String[] args) {
+    public List<Book> getBooks()  {
         File inputFile = new File("res/input.xml");
         SAXParserFactory spf = SAXParserFactory.newInstance();
 
@@ -29,8 +29,8 @@ public class IncorrectSAXParser {
             InputSource input = new InputSource(fileStream);
 
             saxReader.parse(input);
-            List<Book> students = handler.getBookList();
-            System.out.println(students);
+            List<Book> books = handler.getBookList();
+            return books;
 
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
@@ -39,5 +39,6 @@ public class IncorrectSAXParser {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return null;
     }
 }

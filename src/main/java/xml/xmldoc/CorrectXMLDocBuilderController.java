@@ -2,7 +2,6 @@ package xml.xmldoc;
 
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
-import xml.XMLUtil;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -12,7 +11,7 @@ import java.io.IOException;
 
 public class CorrectXMLDocBuilderController {
 
-    public void loadStudents() {
+    public void readStudentsFromXML() {
         File inputFile = new File("res/students.xml");
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         String FEATURE = null;
@@ -32,14 +31,9 @@ public class CorrectXMLDocBuilderController {
             dbf.setXIncludeAware(false);
             dbf.setExpandEntityReferences(false);
 
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        }
-
-        try {
             DocumentBuilder dBuilder = dbf.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);
-            XMLUtil.readDoc(doc);
+            XMLDocUtil.readDoc(doc);
 
         } catch (ParserConfigurationException e) {
             e.printStackTrace();

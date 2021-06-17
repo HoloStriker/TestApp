@@ -1,14 +1,6 @@
 package database;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-
-/**
- *
- */
 
 public class IncorrectSQLiteDBController extends SQLiteDBController{
 
@@ -20,7 +12,6 @@ public class IncorrectSQLiteDBController extends SQLiteDBController{
     public static IncorrectSQLiteDBController getInstance() {
         return DB_CONTROLLER;
     }
-
 
     public boolean checkLogin(String _username, String _password) throws SQLException {
         Statement stmt = connection.createStatement();

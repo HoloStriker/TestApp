@@ -1,10 +1,11 @@
 package main;
 
 import database.CorrectSQLiteDBController;
+import database.IncorrectSQLiteDBController;
 import model.Book;
-import xml.sax.CorrectSAXParser;
-import xml.transformer.CorrectXMLTransformerController;
-import xml.xmldoc.CorrectXMLDocBuilderController;
+import xml.sax.IncorrectSAXParser;
+import xml.transformer.IncorrectXMLTransformerController;
+import xml.xmldoc.IncorrectXMLDocBuilderController;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,16 +25,16 @@ public class AppMain {
 
             String password = br.readLine();
 
-            CorrectSQLiteDBController incorrectDBC = CorrectSQLiteDBController.getInstance();
+            IncorrectSQLiteDBController incorrectDBC = IncorrectSQLiteDBController.getInstance();
             CorrectSQLiteDBController correctDBC = CorrectSQLiteDBController.getInstance();
 
             incorrectDBC.initDBConnection();
             correctDBC.initDBConnection();
 
             boolean successfulLogIn = incorrectDBC.checkLogin(username, password);
-            System.out.println(successfulLogIn);
+            System.out.println("Ergebnis des unsicher implementierten Abgleichs: " + successfulLogIn);
             successfulLogIn = correctDBC.checkLogin(username, password);
-            System.out.println(successfulLogIn);
+            System.out.println("Ergebnis des sicher implementierten Abgleichs: " + successfulLogIn);
 
             incorrectDBC.shutDownDBConnection();
             correctDBC.shutDownDBConnection();
@@ -41,7 +42,7 @@ public class AppMain {
             if(successfulLogIn){
                 System.out.println("LogIn Successful");
 
-                System.out.println("Enter the of what you want to do.\n1 - View books\n2 - View Students");
+                System.out.println("Enter the of what you want to do.\n1 - View books\n2 - View students\n3 - View employees");
                 int i = Integer.parseInt(br.readLine());
                 switch (i){
                     case 1:
@@ -55,26 +56,23 @@ public class AppMain {
                         break;
                 }
             }
-
         } catch (IOException | SQLException ioe) {
-            System.err.println("Invalid Format!");
+            ioe.printStackTrace();
         }
     }
 
     private static void showEmployees() {
-        CorrectXMLTransformerController controller = new CorrectXMLTransformerController();
-        controller.loadEmployees();
+        IncorrectXMLTransformerController controller = new IncorrectXMLTransformerController();
+        controller.readEmployeesFromXML();
     }
 
     private static void showStudents() {
-        CorrectXMLDocBuilderController controller = new CorrectXMLDocBuilderController();
-        //List<Student> students = controller.loadStudents();
-        controller.loadStudents();
-        //students.forEach(student -> System.out.println(student.getFirstName() + " " + student.getLastName()));
+        IncorrectXMLDocBuilderController controller = new IncorrectXMLDocBuilderController();
+        controller.readStudentsFromXML();
     }
 
     private static void showBooks() {
-        CorrectSAXParser parser = new CorrectSAXParser();
+        IncorrectSAXParser parser = new IncorrectSAXParser();
         List<Book> books = parser.getBooks();
         books.forEach(book -> System.out.println(book.getTitle()));
     }

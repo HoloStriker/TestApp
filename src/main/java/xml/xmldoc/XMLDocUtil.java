@@ -1,12 +1,12 @@
-package xml;
+package xml.xmldoc;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public final class XMLUtil {
-    private XMLUtil() {}
+public final class XMLDocUtil {
+    private XMLDocUtil() {}
 
     public static void readDoc(Document doc){
         doc.getDocumentElement().normalize();

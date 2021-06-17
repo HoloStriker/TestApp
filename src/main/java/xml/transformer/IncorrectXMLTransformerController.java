@@ -6,7 +6,7 @@ import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 
 public class IncorrectXMLTransformerController {
-    public void loadEmployees() {
+    public void readEmployeesFromXML() {
         File inputFile = new File("res/employees.xml");
 
         try {
@@ -18,6 +18,7 @@ public class IncorrectXMLTransformerController {
             Source input = new StreamSource(fileStream);
 
             Transformer transformer = tf.newTransformer();
+            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
             transformer.transform(input, streamResult);
 
             System.out.println(writer);
